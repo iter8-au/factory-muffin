@@ -18,7 +18,7 @@ use League\FactoryMuffin\Exceptions\DirectoryNotFoundException;
 use League\FactoryMuffin\Exceptions\ModelNotFoundException;
 use League\FactoryMuffin\Generators\GeneratorFactory;
 use League\FactoryMuffin\HydrationStrategies\HydrationStrategyInterface;
-use League\FactoryMuffin\HydrationStrategies\PublicSetterHydrationStrategy;
+use League\FactoryMuffin\HydrationStrategies\ReflectionHydrationStrategy;
 use League\FactoryMuffin\Stores\ModelStore;
 use League\FactoryMuffin\Stores\StoreInterface;
 use RecursiveDirectoryIterator;
@@ -82,7 +82,7 @@ class FactoryMuffin
     {
         $this->store = $store ?: new ModelStore();
         $this->factory = $factory ?: new GeneratorFactory();
-        $this->default_hydration_strategy = $default_hydration_strategy ?: new PublicSetterHydrationStrategy();
+        $this->default_hydration_strategy = $default_hydration_strategy ?: new ReflectionHydrationStrategy();
     }
 
     /**
